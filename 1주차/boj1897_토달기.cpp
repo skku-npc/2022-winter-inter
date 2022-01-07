@@ -2,7 +2,7 @@
 
 using namespace std;
 
-vector<int> adj[1007];
+vector<int> adj[1007]; // 벡터로 간선 나타냄
 
 int main()
 {
@@ -16,20 +16,20 @@ int main()
     
     int startnum = -1;
         
-    for(int i=0;i<n;++i) if(arr[i]==start) startnum = i;
+    for(int i=0;i<n;++i) if(arr[i]==start) startnum = i; // 시작 문자열이 몇번인지 찾기
     
     // graph make
     for(int i=0;i<n;++i) for(int j=0;j<n;++j) if(arr[i].size() +1 == arr[j].size())    
     {
-        bool can = true;
-        bool add= false;
+        bool can = true; // 문자열 i 에서 문자열 j로 전이가 가능한가?
+        bool add= false; // 이미 한 글자를 추가했는가?
         int sn = 0;
         
         for(int t = 0 ;t<arr[j].size();++t)
         {
             if(arr[i][sn]!= arr[j][t])
             {
-                if(add) can = false;
+                if(add) can = false; // 해당 위치에서 문자가 다를 때 이미 한글자를 추가했다면 전이 불가능
                 add = 1; 
             }
             else ++sn;
